@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Agendamento </title>
+    <link rel="stylesheet" href="styleSS.css">
+</head>
+<body>
+    <header>
+        <h1> Pet UNO - Agendamento </h1>
+    </header>
+
+    <main>
+        <section>
+            <h2> Faça seu Agendamento </h2>
+            <form id="agendamentoForm">
+                <div>
+                    <label for="namePet"> Nome do Pet </label>
+                    <input type="text" id="namePet" placeholder="digite o nome do seu pet" required>
+                </div>
+
+                <div>
+                    <label for="nameResponsavel"> Nome do Responsavel </label>
+                    <input type="text" id="nameResponsavel" placeholder="digite o nome do responsavel" required>
+                </div>
+
+                <div>
+                    <label for="tipeService"> Tipos de Serviço </label>
+                    <select id="tipeService" required>
+                        <option value="" disabled selected> Selecione o tipo de serviço </option>
+                        <option value="banho"> Banho </option>
+                        <option value="tosa"> Tosa </option>
+                        <option value="Consulta"> Consulta </option>
+                        <option value="hospedagem"> Hospedagem </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="dataAgendamento"> Data de Agendamento </label>
+                    <input type="date" id="dataAgendamento" placeholder="digite a data de seu agendamento" required>
+                </div>
+
+                <div>
+                    <label for="agendamentoTime"> Horario de Agendamento </label>
+                    <input type="text" id="agendamentoTime" placeholder="digite o melhor horario de agendamento" required>
+                </div>
+
+                <button type="submit"> Cadastrar Agendamento </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p> &copy; 2024 Pet Zona Animal - Todos os direitos reservados </p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const agendamentoForm = document.getElementById("agendamentoForm");
+
+   agendamentoForm.addEventListener("submit", async (event) => {
+       event.preventDefault();
+
+       const namePet = document.querySelector("#namePet").value;
+       const nameResponsavel = document.querySelector("#nameResponsavel").value;
+       const tipeService = document.querySelector("#tipeService").value;
+       const dataAgendamento = document.querySelector("#dataAgendamento")
+       const agendamentoTime = document.querySelector("#agendamentoTime")
+
+       try {
+           const response = await fetch("http://localhost:8080/api/login", {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify({ namePet, nameResponsavel, tipeService, dataAgendamento, agendamentoTime })
+               });
+
+               if (response.ok) {
+                   alert("Login bem-sucedido!");
+                   window.location.href = "./index";
+               } else {
+                   alert("E-mail ou senha incorretos. Tente novamente.");
+               }
+               } catch (error) {
+                   console.error("Erro ao conectar ao servidor:", error);
+                   alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+               }
+           });
+       });
+   </script>
+
+
+</body>
+</html>

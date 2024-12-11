@@ -1,0 +1,129 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F7F6; /* Cor neutra de fundo */
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #FFB6C1; /* Tom de rosa suave, acolhedor */
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid #FF69B4; /* Cor mais intensa para o efeito de borda */
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-family: 'Pacifico', cursive;
+}
+
+/* Estilo do main */
+main {
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulário de login */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #FF69B4;
+}
+
+form button {
+    padding: 15px;
+    background-color: #FF69B4;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #FF1493;
+    transform: scale(1.05);
+}
+
+/* Link para cadastro */
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+p a {
+    color: #FF69B4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Rodapé */
+footer {
+    background-color: #FFB6C1;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1rem;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+/* Responsividade para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}

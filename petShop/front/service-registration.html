@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registrar Serviço </title>
+    <link rel="stylesheet" href="styleSR.css">
+</head>
+<body>
+    <header>
+        <h1> Pet UNO - Registrar Serviço </h1>
+    </header>
+
+    <main>
+        <section>
+            <h2> Cadastrar Serviço </h2>
+            <form id="serviceForm">
+                <div>
+                    <label for="nameService"></label>
+                    <input type="text" id="nameService" placeholder="digite o serviço que voce deseja" required>
+                </div>
+
+                <div>
+                    <label for="describeService"> Descriçao </label>
+                    <textarea id="describeService" placeholder="digite a descriçao do serviço" rows="4" required></textarea> 
+                </div>
+
+                <div>
+                    <label for="priceService"> Preços </label>
+                    <input type="number" id="priceService" placeholder="digite o valor do serviço" step="0.01" required>
+                </div>
+
+                <button type="submit"> Cadastrar Serviço </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p> &copy; 2024 PetS Zona Animal - Todos os direitos reservados </p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const serviceForm = document.getElementById("serviceForm");
+
+   serviceForm.addEventListener("submit", async (event) => {
+       event.preventDefault();
+
+       const nameService = document.querySelector("#nameService").value;
+       const describeService = document.querySelector("#describeService").value;
+       const priceService = document.querySelector("#priceService").value;
+
+       try {
+           const response = await fetch("http://localhost:8080/api/login", {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify({ nameService, describeService, priceService })
+               });
+
+               if (response.ok) {
+                   alert("Login bem-sucedido!");
+                   window.location.href = "./index";
+               } else {
+                   alert("E-mail ou senha incorretos. Tente novamente.");
+               }
+               } catch (error) {
+                   console.error("Erro ao conectar ao servidor:", error);
+                   alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+               }
+           });
+       });
+   </script>
+
+</body>
+</html>
